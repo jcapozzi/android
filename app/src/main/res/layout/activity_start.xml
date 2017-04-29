@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:baselineAligned="false"
+    android:weightSum="1">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="381dp"
+        android:layout_height="wrap_content"
+        android:onClick="moveFarmer"
+        android:text="Farmer goes alone" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="moveWolf"
+        android:text="Farmer brings Wolf" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="moveGoat"
+        android:text="Farmer brings Goat" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="moveCabbage"
+        android:text="Farmer brings Cabbage" />
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="31dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="reset"
+        android:text="Reset" />
+
+    <GridLayout
+        android:id="@+id/display"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.00">
+
+    </GridLayout>
+</LinearLayout>
