@@ -14,7 +14,7 @@ import java.util.function.UnaryOperator;
  * names and functions by calling the <b>addMove</b> method.
  * @author tcolburn
  */
-public abstract class Mover {
+public abstract class Mover<T extends State> {
 
     /**
      * Constructs a new Mover object for a problem solving domain.
@@ -33,7 +33,7 @@ public abstract class Mover {
      * made in that state, a new state is returned that is the result of the
      * move.  If the move cannot be made, null is returned.
      */
-    public void addMove(String moveName, UnaryOperator<State> function) {
+    public void addMove(String moveName, UnaryOperator<T> function) {
         moveNames.add(moveName);
         moveMap.put(moveName, function);
     }
@@ -56,8 +56,8 @@ public abstract class Mover {
      * @return the result of applying the move name's associated
      * function on the given state
      */
-    public State doMove(String moveName, State state) {
-        UnaryOperator<State> function = moveMap.get(moveName);
+    public T doMove(String moveName, T state) {
+        UnaryOperator<T> function = moveMap.get(moveName);
         if ( function == null ) {
             throw new RuntimeException("Bad move name: " + moveName);
         }
@@ -65,6 +65,6 @@ public abstract class Mover {
     }
     
     private final List<String> moveNames;
-    private final Map<String, UnaryOperator<State>> moveMap;
+    private final Map<String, UnaryOperator<T>> moveMap;
     
 }

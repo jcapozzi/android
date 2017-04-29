@@ -9,7 +9,7 @@ package com.example.framework.problem;
  * needs to be overridden.
  * @author tcolburn
  */
-public class Problem {
+public class Problem<T extends State> {
 
     public String getName() {
         return name;
@@ -27,23 +27,23 @@ public class Problem {
         this.introduction = introduction;
     }
 
-    public State getInitialState() {
+    public T getInitialState() {
         return initialState;
     }
 
-    public void setInitialState(State initialState) {
+    public void setInitialState(T initialState) {
         this.initialState = initialState;
     }
 
-    public State getFinalState() {
+    public T getFinalState() {
         return finalState;
     }
 
-    public void setFinalState(State finalState) {
+    public void setFinalState(T finalState) {
         this.finalState = finalState;
     }
 
-    public Mover getMover() {
+    public Mover<T> getMover() {
         return mover;
     }
 
@@ -51,11 +51,11 @@ public class Problem {
         this.mover = mover;
     }
 
-    public State getCurrentState() {
+    public T getCurrentState() {
         return currentState;
     }
 
-    public void setCurrentState(State currentState) {
+    public void setCurrentState(T currentState) {
         this.currentState = currentState;
     }
     
@@ -71,8 +71,8 @@ public class Problem {
     
     private String name;
     private String introduction;
-    private State initialState;
-    private State currentState;
-    private State finalState;
+    private T initialState;
+    private T currentState;
+    private T finalState;
     private Mover mover;
 }

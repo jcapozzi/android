@@ -8,24 +8,17 @@ package com.example.problemsolver;
 import com.example.framework.problem.Mover;
 import com.example.framework.problem.State;
 
-import java.util.function.UnaryOperator;
-
 /**
  *
  * @author Tyler
  */
-public class FarmerMover extends Mover {
+public class FarmerMover extends Mover<FarmerState> {
     
     public FarmerMover() {
-            super.addMove(FARMER, new UnaryOperator<State>() {
-                @Override
-                public State apply(State state) {
-                    return tryFarmer(state);
-                }
-            });
-//            super.addMove(WOLF, s -> tryWolf(s));
-//            super.addMove(GOAT, s -> tryGoat(s));
-//            super.addMove(CABBAGE, s -> tryCabbage(s));
+            super.addMove(FARMER,  s -> tryFarmer(s));
+            super.addMove(WOLF, s -> tryWolf(s));
+            super.addMove(GOAT, s -> tryGoat(s));
+            super.addMove(CABBAGE, s -> tryCabbage(s));
     }
     
     /*@Override
@@ -39,72 +32,68 @@ public class FarmerMover extends Mover {
     }
     */
     
-    private State tryFarmer(State s) {
-        FarmerState thing =(FarmerState)s;
-        Pos farmerPos = thing.getFarmer();
-    if ((thing.getCabbage() != thing.getGoat()) && (thing.getGoat() != thing.getWolf())) {
+    private FarmerState tryFarmer(FarmerState state) {
+        Pos farmerPos = state.getFarmer();
+    if ((state.getCabbage() != state.getGoat()) && (state.getGoat() != state.getWolf())) {
         if ( farmerPos == Pos.EAST ) {
             farmerPos = Pos.WEST;
         } else {
             farmerPos = Pos.EAST;
         }
-        thing = new FarmerState( farmerPos, thing.getWolf(), thing.getGoat(), thing.getCabbage() );
+        state = new FarmerState( farmerPos, state.getWolf(), state.getGoat(), state.getCabbage() );
     }    
     else {
         return null;
     }
-    return thing;
+    return state;
     }
     
-    private State tryWolf(State s) {
-        FarmerState thing =(FarmerState)s;
-        Pos wolfPos = thing.getWolf();
-    if ((wolfPos == thing.getFarmer()) && (thing.getGoat() != thing.getCabbage())) {
+    private FarmerState tryWolf(FarmerState state) {
+        Pos wolfPos = state.getWolf();
+    if ((wolfPos == state.getFarmer()) && (state.getGoat() != state.getCabbage())) {
         if ( wolfPos == Pos.EAST ) {
             wolfPos = Pos.WEST;
         } else {
             wolfPos = Pos.EAST;
         }
-        thing = new FarmerState( wolfPos, wolfPos, thing.getGoat(), thing.getCabbage() );
+        state = new FarmerState( wolfPos, wolfPos, state.getGoat(), state.getCabbage() );
     }
     else {
         return null;
     }
-    return thing;
+    return state;
     }
     
-    private State tryGoat(State s) {
-        FarmerState thing =(FarmerState)s;
-        Pos goatPos = thing.getGoat();
-    if (goatPos == thing.getFarmer()) { 
+    private FarmerState tryGoat(FarmerState state) {
+        Pos goatPos = state.getGoat();
+    if (goatPos == state.getFarmer()) {
         if ( goatPos == Pos.EAST ) {
             goatPos = Pos.WEST;
         } else {
             goatPos = Pos.EAST;
         }
-        thing = new FarmerState(goatPos, thing.getWolf(), goatPos, thing.getCabbage() );
+        state = new FarmerState(goatPos, state.getWolf(), goatPos, state.getCabbage() );
     }
     else {
         return null;
     }
-    return thing;
+    return state;
     }
 
-    private State tryCabbage(State s) {
-        FarmerState thing =(FarmerState)s;
-        Pos cabbagePos = thing.getCabbage();
-    if ((cabbagePos == thing.getFarmer()) && (thing.getWolf() != thing.getGoat())) {
+    private FarmerState tryCabbage(FarmerState state) {
+        Pos cabbagePos = state.getCabbage();
+    if ((cabbagePos == state.getFarmer()) && (state.getWolf() != state.getGoat())) {
         if ( cabbagePos == Pos.EAST ) {
             cabbagePos = Pos.WEST;
         } else {
             cabbagePos = Pos.EAST;
         }
-        thing = new FarmerState(cabbagePos, thing.getWolf(), thing.getGoat(), cabbagePos );
+        state = new FarmerState(cabbagePos, state.getWolf(), state.getGoat(), cabbagePos );
     }
     else {
         return null;
     }
-    return thing;
+    return state;
     }
         public static final String FARMER = "Farmer goes alone";
         public static final String WOLF = "Farmer brings wolf";
