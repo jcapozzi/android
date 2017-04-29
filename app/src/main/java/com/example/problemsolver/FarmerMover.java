@@ -26,7 +26,7 @@ public class FarmerMover extends Mover {
 //            super.addMove(WOLF, s -> tryWolf(s));
 //            super.addMove(GOAT, s -> tryGoat(s));
 //            super.addMove(CABBAGE, s -> tryCabbage(s));
-//    }
+    }
     
     /*@Override
     public State doMove(String moveName, State state) {

@@ -1,54 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:baselineAligned="false"
-    android:weightSum="1">
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="381dp"
-        android:layout_height="wrap_content"
-        android:onClick="moveFarmer"
-        android:text="Farmer goes alone" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="moveWolf"
-        android:text="Farmer brings Wolf" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="moveGoat"
-        android:text="Farmer brings Goat" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="moveCabbage"
-        android:text="Farmer brings Cabbage" />
-
-    <Button
-        android:id="@+id/reset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="31dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:onClick="reset"
-        android:text="Reset" />
+    tools:context="com.example.problemsolver.ProblemActivity">
 
     <GridLayout
-        android:id="@+id/display"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.00">
+        android:layout_width="411dp"
+        android:layout_height="603dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp"
+                android:layout_weight="0.83">
+
+                <CheckedTextView
+                    android:id="@+id/stateText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/farmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="moveFarmer"
+                        android:text="Farmer" />
+
+                    <Button
+                        android:id="@+id/wolf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="moveWolf"
+                        android:text="Wolf" />
+
+                    <Button
+                        android:id="@+id/goat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="moveGoat"
+                        android:text="Goat" />
+
+                    <Button
+                        android:id="@+id/cabbage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="moveCabbage"
+                        android:text="Cabbage" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/message"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_weight="0.24"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="26dp"
+                tools:layout_editor_absoluteY="501dp" />
+
+        </LinearLayout>
 
     </GridLayout>
-</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
